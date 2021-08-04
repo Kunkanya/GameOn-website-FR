@@ -74,7 +74,7 @@ img {
     float: right;
     display: block;
   }
-  
+}  
 
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
@@ -149,7 +149,11 @@ img {
     font-size: 0.7rem;
     margin-top: 1rem;
   }
+  .bground{
+    padding-top: 70px;
+  }
 } 
+
 /*--------------------------------------------------------------*/
 /*Kunkanya: edit font-size h1  in mobile version max-width 321px*/
 @media screen and (max-width: 320px) {
@@ -157,6 +161,15 @@ img {
     font-size: 2rem;
   }
 }
+/*--------------------------------------------------------------*/
+
+/*Kunkanya: edit font-size .main-navbar  in mobile version max-width 321px*/
+@media screen and (max-width: 1024px) {
+  .main-navbar a{
+  font-size: 1rem;
+ }
+}
+
 /*--------------------------------------------------------------*/
 main {
   font-size: 130%;

@@ -20,4 +20,8 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+//Kunkanya : close modal form
+function windowClose() {
+  modalbg.style.display = "none";
+}
 
