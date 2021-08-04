@@ -74,7 +74,7 @@ img {
     float: right;
     display: block;
   }
-}
+  
 
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
@@ -91,23 +91,80 @@ img {
 }
 
 
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: -15px;   
+    /* Kunkanya : edit padding burger icon*/
+    padding-right:0;   
+  }
+  main{
+    margin-bottom: 0 !important;
+  }
+   /* Kunkanya : edit height*/
+   .hero-section{
+     min-height: fit-content !important;
+   }
+  /* Kunkanya : edit padding top*/
+  .topnav{
+    padding-top:2rem;
+  }
+  /*Kunkanya: edit size of Logo in mobile version*/
+  .header-logo img{
+    width: 130px;
+    padding-left:0.5rem;
+  }  
+  /*Kunkanya: edit color=red of hamburger bar*/
+  i.fa-bars::before{
+    color: red;
+  }
+  /*Kunkanya: edit  width in mobile version*/
+  div.hero-content{
+    min-width: fit-content;
+    padding : 0;
+    white-space: normal;
+  }
+  /*Kunkanya: edit font-size h1  in mobile version*/
+  h1.hero-headline{
+    font-size: 2.4rem;
+    font-weight: bold;
+  }
+  /*Kunkanya: edit font-size in mobile version*/
+  p.hero-text{
+    font-size: 0.8rem;
+    margin : 1rem 0;
+  }
+  /*Kunkanya: padding-top img in mobile version*/
+  div.hero-img img{
+    margin-top: 1.5rem;
+  }
+  /*Kunkanya: Edit font-size button in mobile version*/
+  button.btn-signup{
+    font-size: 1rem;
+  }
+  /*Kunkanya: edit font-size p in .copyright in Footer*/
+  p.copyrights{
+    font-size: 0.7rem;
+    margin-top: 1rem;
   }
 } 
-
+/*--------------------------------------------------------------*/
+/*Kunkanya: edit font-size h1  in mobile version max-width 321px*/
+@media screen and (max-width: 320px) {
+   h1.hero-headline{
+    font-size: 2rem;
+  }
+}
+/*--------------------------------------------------------------*/
 main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
