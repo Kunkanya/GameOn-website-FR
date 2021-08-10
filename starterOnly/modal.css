@@ -597,14 +597,20 @@ footer {
   }
 }
 
+/*Kunkanya: set .errmsg to hidden*/
+.errMsg{
+  display: none;
+  font-size: 10px;
+}
 /*Kunkanya : add style for invalid input form*/
-.text-control:invalid{
+.text-control.error{
   border: solid 2px red;
   background-color: rosybrown;
 }
-
-
-.errorMessage{
+/*Kunkanya : in case error show error message*/
+.text-control.error ~ .errMsg{
+  display: block;
   color: red;
-  font-size: 10px;
 }
+
+

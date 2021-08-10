@@ -12,102 +12,79 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+//Kunkanya set variable
+const form = document.getElementsById("reserve");
 const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const birthDate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
+const formSubmit =document.getElementsByClassName("btn-submit");
 
 
 //Kunkanya : Error messages for moDAL VALIDATION
-const nameErrorMessage = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-const birthDateErrorMessage = "Vous devez entrer votre date de naissance."
+const nameErrorMessage = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+const birthDateErrorMessage = "Vous devez entrer votre date de naissance.";
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-}
+};
 
 //Kunkanya : close modal form
 function closeModal() {
   modalbg.style.display = "none";
-}
+};
 
+form.addEventListener('submit', e =>{
+  e.preventDefault();
+  console.log("prevent default");
+  validate();
+});
 
-//Kunkanya: create Element for error message
-function createElement(){
-  var p = document.createElement("p");
-  var node = document.createTextNode("nameErrorMessage");
-  p.appendChild(node);
-  var input = document.getElementsByClassName("text-control");
-  input.appendChild(p);
-}
-
-//Variables 
-var lastName = document.getElementById("last").value;
-var email = document.getElementById("email").value;
-var birthDate = document.getElementById("birthdate").value;
-var quantity = document.getElementById("quantity").value;
-var errorMsg = document.getElementsByClassName("errMsg")
-
-
-//Kunkanya :function checkFirstName(){
-  function FirstNamevalidate(){
-    var valid = true;
-    if (firstName.value == "" || (0 <= firstName.length < 2)){
-      valid = false;
-      firstName.style.border = "solid 2px red";
-      firstName.insertAdjacentHTML('afterend','<p id="errorMessage" style=font-size:0.8rem;color:red>'+ nameErrorMessage +'</p>');
-      var err = document.getElementById("errorMessage")
-      firstName.focus();
-      return valid;
-    } else {
-      valid = true;
-      return valid;
-      }
-    }
-// Kunkanya : test function validate()
 function validate(){
-  errorMsg.style.display = "none";
-  var valid = true;
-  if (firstName.value == "" || (0 <= firstName.length < 2)){
-    valid = false;
-    firstName.style.border = "solid 2px red";
-    errorMsg.style.display = "block";
-}else {
-  valid = true;
-  return valid;
-}
-   
-//Kunkanya : Function return value from the location checkbox
-function validateLocation()  {
-  let i=0; 
-  let locationArr = document.getElementsByName("location");
-  for (i=0 ; i < locationArr.length; i++) {
-     var locationChecked = document.getElementsByName("location")[i];
-     if (locationChecked.checked == true){
-         var locationValue = locationChecked.value
-         return locationValue;
-        }
-  }
- }
-//Kunkanya : validation checkbox1 for condition
-/*function conditionCheck(){
-  var x = document.getElementById("checkbox1").checked;
-  if (x = false){
-    alert("Vous devez vérifier que vous acceptez les termes et conditions.");
-  } else {
-    var conditionChecked = document.getElementsByClassName("checkbox1").value
-    //alert(conditionChecked);
-    alert("condition Checked");
-  }
-}*/
+  checkInput();
+  return true;
+};
 
-//Kunkanya : Function validation in the input form
-  function validate__test() {
-    if (firstName = "") {
-    window.alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
-  }else{
-  window.alert(firstName + " " + lastName + " " + email + " " + birthDate + " " + quantity + " " + location + " " + condition )  
-  alert("Merci! Votre reservation a été recue")
-}
-}
+function checkInput(){
+    // check Firstname and trimming value from firstname
+    if (firstName.value == "" || firstName.value.length < 2){
+        setClassError(firstName, nameErrorMessage);
+        firstName.focus;
+    }else{
+        setClassSuccess(firstName);
+    }
+    if (lastName.value == "" || lastName.value.length < 2){
+      setClassError(lastName, nameErrorMessage);
+      lastName.focus;
+    }else{
+      setClassSuccess(firstName);
+  }
+};
 
+// set class error to .text-control function
+function setClassError(input, message){
+  input.className = 'text-control error';
+  const p = document.getElementsByClassName("errMsg");
+  p.innerHTML = message
+  //alert(p.innerHTML.value);
+};
+
+// set class to success to .text-control function
+function setClassSuccess(input){
+  input.className = 'text-control';
+};
+
+// try and catch error
+try {
+  validate();
+} catch (error) {
+  console.log(error instanceof TypeError);
+  alert(error.message + " " + 
+        error.lineNumber );
+  
+}
