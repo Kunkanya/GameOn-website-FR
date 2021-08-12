@@ -61,36 +61,41 @@
               <label for="first">Prénom</label><br>
               <!--Kunkanya deleted minlength="2" and add this to jvScript in validate()-->
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
-            </div>            
+            </div>
 
             <div class="formData">
               <!--Kunkanya : add for-attribute in label to link with ID in input-field-->
               <label for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
             </div>
             <div class="formData">
               <!--Kunkanya : add for-attribute in label to link with ID in inputfield and deleted requied-->
               <label for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
             </div>
             <div class="formData">
               <!--Kunkanya : add for-attribute in label to link with ID in input-field-->
               <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
             </div>
             <div class="formData">
               <!--Kunkanya : add for-attribute in label to link with ID in input-field-->
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
+              <small class="errMsg"></small>
             </div>
             <p class="text-label">Quelles villes ?</p>
             <div class="formData">
-              <!--Kunkanya : add checked in this input-field-->
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked />
+              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -114,14 +119,16 @@
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
                 Portland</label>
+              <small class="errMsg"></small>
             </div>
-<!--Kunkanya : removed required from label-->
+            <!--Kunkanya : removed required from label-->
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
-              <label class="checkbox2-label" for="checkbox1" >
+              <input class="checkbox-input" type="checkbox" id="checkbox1" />
+              <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
+              <small class="errMsg"></small>
               <br>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
@@ -131,10 +138,15 @@
               </label>
               <br>
             </div>
-            <!--Kunkanya corrected class = to ID "btn-submit" (double class) to class="btn-submit button" -->
-            <input class="btn-submit" class="button" type="submit" value="C'est parti" />
+            <!--Kunkanya corrected class = "btn-submit" (double class) to class="btn-submit button" -->
+            <input class="btn-submit button" type="submit" value="C'est parti" />
           </form>
+          <div id="thankyou">
+            <h1>Merci! Votre réservation a été reçue.</h1>
+            <button onclick="closeModal()" class="modal-btn btn-signup" type="submit" >Fermer </button>
+          </div>  
         </div>
+<!--Kunkanya: add thank you section-->
       </div>
     </div>
   </main>

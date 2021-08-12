@@ -97,9 +97,8 @@ img {
     float: right;
     display: block;
     margin-top: -15px;   
-    /* Kunkanya : edit padding burger icon*/
-    padding-right:0;   
   }
+  
   main{
     margin-bottom: 0 !important;
   }
@@ -107,10 +106,6 @@ img {
    .hero-section{
      min-height: fit-content !important;
    }
-  /* Kunkanya : edit padding top*/
-  .topnav{
-    padding-top:2rem;
-  }
   /*Kunkanya: edit size of Logo in mobile version*/
   .header-logo img{
     width: 130px;
@@ -163,7 +158,7 @@ img {
 }
 /*--------------------------------------------------------------*/
 
-/*Kunkanya: edit font-size .main-navbar  in mobile version max-width 321px*/
+/*Kunkanya: edit font-size .main-navbar  in mobile version max-width 1024px*/
 @media screen and (max-width: 1024px) {
   .main-navbar a{
   font-size: 1rem;
@@ -587,6 +582,28 @@ footer {
   }
 }
 
+/*Kunkanya: set fontsize for error message*/
+.errMsg{
+  font-size: 0.8rem;
+}
+
+/*Kunkanya : hide formAccepted pages*/
+#thankyou{
+  position: relative;
+  top: 0;
+}
+
+#thankyou h1{
+  display: flex;
+  justify-content : center;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+#thankyou button{
+  align-items: center;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -597,20 +614,5 @@ footer {
   }
 }
 
-/*Kunkanya: set .errmsg to hidden*/
-.errMsg{
-  display: none;
-  font-size: 10px;
-}
-/*Kunkanya : add style for invalid input form*/
-.text-control.error{
-  border: solid 2px red;
-  background-color: rosybrown;
-}
-/*Kunkanya : in case error show error message*/
-.text-control.error ~ .errMsg{
-  display: block;
-  color: red;
-}
 
 
