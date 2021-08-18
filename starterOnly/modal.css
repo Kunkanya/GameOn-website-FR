@@ -73,6 +73,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+
   }
 }  
 
@@ -88,6 +89,10 @@ img {
     display: block;
     text-align: left;
   }
+  i.fa-bars{
+    color:red;
+  }
+     
 }
 
 
@@ -96,7 +101,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;   
+    /*Kunkanya: deleted margin-top for the hamburger bar to adjust the line with logo
+    margin-top: -15px;   */
   }
   
   main{
@@ -110,6 +116,8 @@ img {
   .header-logo img{
     width: 130px;
     padding-left:0.5rem;
+    /*Kunkanya: add margin-top for logo to adjust the line with navbar*/
+    margin-top: 15px;
   }  
   /*Kunkanya: edit color=red of hamburger bar*/
   i.fa-bars::before{
@@ -155,6 +163,17 @@ img {
    h1.hero-headline{
     font-size: 2rem;
   }
+  /*Kunkanya : edit the width of logo + margin + padding-left to align navbar -responsive with the icon*/
+  .header-logo img {
+    width: 100px;
+    padding-left: 0;
+    margin-top: 15px;
+}
+/*Kunkanya : edited margin-top for modal to showup just below the logo*/
+div.content{
+  margin : 0 auto;
+}
+
 }
 /*--------------------------------------------------------------*/
 
@@ -566,7 +585,7 @@ footer {
   .hero-text {
     width: unset;
     font-size: 1.5rem;
-  }
+  align-items: center;}
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
@@ -589,19 +608,25 @@ footer {
 
 /*Kunkanya : hide formAccepted pages*/
 #thankyou{
+  display: none;
   position: relative;
   top: 0;
+  z-index: 3;
+  height: 400px;
 }
 
+/*Kunkanya : set font for thankyou section*/
 #thankyou h1{
-  display: flex;
-  justify-content : center;
   color: white;
-  padding: 2rem 1rem;
+  font-size: 2rem;
+  margin: 10rem 0 3rem 0;
+  
 }
 
 #thankyou button{
-  align-items: center;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-end;
 }
 
 @keyframes modalopen {

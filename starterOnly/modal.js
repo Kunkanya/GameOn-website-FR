@@ -21,7 +21,7 @@ const birthDate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const locationTown = document.querySelectorAll('input[name="location"]');
 const conditionGeneral = document.getElementById('checkbox1');
-const formSubmit = document.getElementsByClassName("btn-submit")[0];
+const formSubmit = document.getElementById("close");
 
 //Kunkanya : Error messages for function validate()
 const nameErrorMessage =
@@ -31,7 +31,7 @@ const birthDateErrorMessage = "Vous devez entrer votre date de naissance.";
 const quantityErrorMessage = "Vous devez saisir une nummer.";
 const locationErrorMessage = "Vous devez choisir une option.";
 const conditionErrorMessage = "Vous devez vérifier que vous acceptez les termes et conditions.";
-
+let valid = false;
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -48,18 +48,17 @@ function closeModal() {
 //Kunkanya : add preventdefault() for input form when the page is loading
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  validate();
+    validate();
 });
 
 //Kunkanya : function validation all the input forms before click submit button
 function validate() {
-  
+ let  valid = false;
   // Kunkanya: check Input for firstname if it is valid
   if (firstName.value === "" || firstName.value.length < 2) {
     // Kunkanya: when error go to setInputError function
     setInputError(firstName, nameErrorMessage);
     return false;
-
   } else {
     // Kunkanya: when success go to setInputError function
     setInputSuccess(firstName);
@@ -70,24 +69,25 @@ function validate() {
   if (lastName.value === "" || lastName.value.length < 2) {
     // Kunkanya: when error go to setInputError function
     setInputError(lastName, nameErrorMessage);
-    return false;
-    
+    return false;    
   } else {
     // Kunkanya: when success go to setInputError function
     setInputSuccess(lastName);
   }
 
   //Kunkanya: check E-mail
-  if (email.value === "" || email.value == null) {
+  if (email.value === "" || email.value == null ) {
     // Kunkanya: when error go to setInputError function
     setInputError(email, emailErrorMessage);
     return false;
-  } else {
+  }
+  else {
     // Kunkanya: when success go to setInputError function
     setInputSuccess(email);
   }
 
   //Kunkanya: check birthdate
+  
   if (birthDate.value === "") {
     // Kunkanya: when error go to setInputError function
     setInputError(birthDate, birthDateErrorMessage);
@@ -107,12 +107,26 @@ function validate() {
     setInputSuccess(quantity);
   }
 
+
   //Kunkanya:call function check location 
+  
   checkLocation(locationTown,locationErrorMessage);
   
-
+ 
   // Kunkanya: check condition general if checked
-  checkConditionGeneral(conditionGeneral, conditionErrorMessage);
+  if(!conditionGeneral.checked) {
+    checkConditionGeneral(conditionGeneral, conditionErrorMessage);
+  }else{
+    valid = true;
+  }
+
+  if(valid){
+    form.style.display = "none";
+    const submitPage = document.getElementById("thankyou");
+    submitPage.style.display="block";
+  }else{
+    validate();
+  }
 }
 
 //Kunkanya: if error, input = HTMLElement we want to check and message is the error message
@@ -144,47 +158,39 @@ function setInputSuccess(input) {
 
 //Kunkanya : function for validation the location 
 function checkLocation(input, message){
-  let locationValid = false;
-  //Kunkanya: to select the parent element of the DOM
-  let parent = input[0].parentElement;
-  //Kunkanya: to select the child of the parent with tag "small"
-  let err = parent.querySelector("small");
-  //Kunkanya : check for each input if it checked
-  for (var i=0 ; i < input.length ; i++){
-    if(input[i].checked == true){
-      err.style.display = "none";
-      locationValid = true;
-      break;
-    } 
-  } 
+      let locationValid = false;
+      //Kunkanya: to select the parent element of the DOM
+      let parent = input[0].parentElement;
+      //Kunkanya: to select the child of the parent with tag "small"
+      let err = parent.querySelector("small");
+      //Kunkanya : check for each input if it checked
+      for (var i=0 ; i < input.length ; i++){
+        if(input[i].checked == true){
+          err.style.display = "none";
+          locationValid = true;
+          break;
+        } 
+      }
+        if(!locationValid){
+          err.style.display = "block";
+          err.style.color ="red";
+          err.innerText = message;
+        }
+} 
 
-  //Kunkanya: after the loop and nothing is checked  
-    if(!locationValid) {
-       err.style.display = "block";
-       err.style.color ="red";
-       err.innerText = message;
-       //checkLocation(input, message);
-      }             
-}
 
+
+//Kunkanya : function check condition general
 function checkConditionGeneral(input, message){
   var parent = conditionGeneral.parentElement;
   var err = parent.querySelector("small");
-  if(!conditionGeneral.checked){
-    err.style.display= "block";
-    err.style.color = "red";
-    err.innerText = conditionErrorMessage;
-    return false;
-  } else{
-    err.style.display ="none";
-    return true;
+      if(!conditionGeneral.checked){
+        err.style.display= "block";
+        err.style.color = "red";
+        err.innerText = conditionErrorMessage;
+        return false;
+      } else{
+        err.style.display ="none";
+        return true;
+      }
   }
-  }
-
-formSubmit.addEventListener('click', (e)=>{
-  e.preventDefault();
-  form.style.display = "none";
-  const submitPage = document.getElementById("#thankyou");
-  console.log(submitPage);
-  submitPage.style.display="block";
-});
