@@ -119,6 +119,7 @@
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
                 Portland</label>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
             </div>
             <!--Kunkanya : removed required from label-->
@@ -128,6 +129,7 @@
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
+              <!--Kunkanya : add error message under input. It will display when invalid input-->
               <small class="errMsg"></small>
               <br>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
@@ -139,14 +141,15 @@
               <br>
             </div>
             <!--Kunkanya corrected class = "btn-submit" (double class) to class="btn-submit button" -->
-            <input class="btn-submit button" type="submit" value="C'est parti" />
+            <input id="thankYou" class="btn-submit button" type="submit" value="C'est parti" />
           </form>
+          <!--Kunkanya: add thank you section after validation-->
           <div id="thankyou">
             <h1>Merci! Votre réservation a été reçue.</h1>
-            <button class="modal-btn">Fermer</button>
+            <button class="thankyou_button" onclick="closeModal()">Fermer</button>
           </div>  
         </div>
-<!--Kunkanya: add thank you section-->
+          <!--Kunkanya:end thank you section-->
       </div>
     </div>
   </main>
